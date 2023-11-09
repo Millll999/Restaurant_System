@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: FC Lamoon;
+            text-align: center;
+        }
+        .title {
+            font-size: 50px;
+        }
+        .container {
+            margin: 40px auto;
+            max-width: 700px;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        input[type="text"], input[type="password"] {
+            font-family: FC Lamoon;
+            width: 200px;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+        }
+        input[type="submit"] {
+            font-family: FC Lamoon;
+            background-color: #f1b930;
+            color: black;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 400px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #007aff;
+        }
+        .back-button {
+            font-family: FC Lamoon;
+            font-size: 32px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Fresh Bowl</h2>
+        <!--<h2>Fresh Bowl</h2>-->
+        <form action = "/signup" method="post">
+            <label>First Name <input type="text" name="First_Name" placeholder="First name" required></label><br>
+            <label>Last Name <input type="text" name="Last_Name" placeholder="Last name" required></label><br>
+            <label>Citizen ID</label>
+            <input type="text" name="Citizen_ID" placeholder="x-xxxx-xxxxx-xx-x" required><br>
+            <label>Address </label>
+            <input type="text" name="address" placeholder=""><br>
+            <label>Username </label>
+            <input type="text" name="username" placeholder="" required><br>
+            <label>Password </label>
+            <input type="password" name="password" id="password" placeholder="" required><br>
+            <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" name="confirmPassword" id="confirmPassword" required>
+                <span id="passwordMismatchError" style="color: red; display: none;">Passwords do not match</span>
+            </div><br>
+            <br>
+            <input type="submit" value="Sign Up"><br>
+        </form>
+    </div>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const passwordMismatchError = document.getElementById("passwordMismatchError");
+            
+            confirmPasswordInput.addEventListener("input", () => {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    passwordMismatchError.style.display = "block";
+                } else {
+                    passwordMismatchError.style.display = "none";
+                }
+            });
+    </script>
+</body>
+</html>

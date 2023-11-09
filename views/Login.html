@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: FC Lamoon;
+            text-align: center;
+        }
+        .title {
+            font-size: 50px;
+        }
+        .container {
+            margin: 100px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        input[type="text"], input[type="password"] {
+            font-family: FC Lamoon;
+            width: 200px;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            font-family: FC Lamoon;
+            background-color: #f1b930;
+            color: black;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 400px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #007aff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Fresh Bowl</h2>
+        <!--<h2>Fresh Bowl</h2>-->
+        <form action = "/login" method="post">
+            <label>Username <input type="text" name="username" placeholder="" required></label><br>
+            <label>Password <input type="password" name="password" placeholder="" required></label><br>
+            <label><input type="checkbox" name="remember"> Remember me</label><br>
+            <br>
+            <input type="submit" value="Login"><br>
+            <br>
+            <label>Don't have an account?</label><a href="/sign"> Sign Up </a><br>
+            <br>
+            <label>Forgot pssword?</label><a href="/re"> Forgot Password </a><br>
+        </form>
+    </div>
+</body>
+
+  
+  
+</html> 

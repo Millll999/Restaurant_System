@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+    <style>
+        body {
+            font-family: FC Lamoon;
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            font-size: 32px;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #f1b930;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+        }
+        .home-button {
+            font-family: FC Lamoon;
+            padding: 10px 20px;
+            font-size: 32px;
+            background-color: #f1b930;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .menu-pic {
+            border-radius: 0%;
+            width: 40px;
+            height: 40px;
+
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .back-button {
+            font-family: FC Lamoon;
+            font-size: 32px;
+            position: absolute;
+            top: 110px;
+            left: 30px;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+        }
+        input[type="search"] {
+            align-items: center;
+            width: 200px; 
+            border-radius: 40px; 
+            padding: 8px; 
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .container {
+            margin: auto;
+            max-width: 500px;
+            padding: 0px;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            background-color: #ffffff;
+            justify-content: space-between;
+        }
+        .menu-button {
+            font-family: FC Lamoon;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            font-size: 24px;
+            background-color: #f1b930;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .menu-button:hover {
+            background-color: #007aff;
+        }
+        .cart-button {
+            background-image: url('Cart.png');
+            background-size: cover;
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <div>
+            <button class="home-button" onclick="location.href='Home.html'">Fresh Bowl</button>
+        </div>
+        <div>
+            <div class="dropdown">
+                <img class="profile-pic" src="profile.png" alt="Profile Picture">
+                <div class="dropdown-content" style="right: -20px;">
+                <a href="#">Logout</a>
+                <a href="#">Change Password</a>
+                </div>
+            </div>
+            <div class="dropdown" style="padding-left: 20px;">
+                <img class="menu-pic" src="menu.png" alt="Menu Picture">
+                <div class="dropdown-content" style="right: -20px;">
+                <a href="#">Order history</a>
+                <a href="#">setting</a>
+                <a href="#">Customer service</a>
+                <a href="#">About</a>
+                <a href="Book.html">Booking</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="back-button" onclick="goBack()">Back</button> 
+    <form action="/addorder" method="post">  
+    <button class="cart-button" type="submit"></button>
+    </form>
+    <div class="search-bar">
+        <input type="search" placeholder="Search...">
+    </div>
+    <h2 class="title">Savory</h2>
+    <div class="container">    
+        <div id="menu-container">
+        </div>
+    </div> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    fetch('/savormenu') 
+        .then((response) => response.json())
+        .then((data) => {
+        const menuContainer = document.getElementById('menu-container');
+        data.forEach((item) => {
+            const button = document.createElement('button');
+            button.classList.add('menu-button');
+            button.textContent = item.buttonLabel;
+            button.addEventListener('click', () => {
+                console.log('button clicked');
+                return addToCart(item.buttonId);
+            });
+             menuContainer.appendChild(button);
+            });
+        })
+        .catch((error) => {
+        console.error('AJAX error:', error);
+    });
+});
+function addToCart(buttonId) {  
+    fetch('/addToCart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ Menu_ID: buttonId }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            console.log('Item added to cart');
+        } else {
+            console.error('Failed to add item to cart');
+        }
+    })
+    .catch((error) => {
+        console.error('AJAX error:', error);
+    });
+}
+    </script>
+</body>
+</html>

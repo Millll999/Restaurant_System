@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Page</title>
+    <style>
+        body {
+            font-family: FC Lamoon;
+            text-align: center;
+        }
+        .title {
+            font-size: 50px;
+        }
+        .container {
+            margin: 100px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        input[type="text"], input[type="password"] {
+            font-family: FC Lamoon;
+            width: 200px;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            font-family: FC Lamoon;
+            background-color: #f1b930;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #007aff;
+        }
+        .back-button {
+            font-family: FC Lamoon;
+            font-size: 32px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Reset your password</h2>
+        <form action = "/reset-password" method="post">
+        <label for="username">Username </label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="new_password">New Password </label>
+        <input type="password" id="new_password" name="new_password" required><br>
+            <div class="input-box">
+                <span class="details">Confirm Password </span>
+                <input type="password" name="confirmPassword" id="confirmPassword" required>
+                <span id="passwordMismatchError" style="color: red; display: none;">Passwords do not match</span>
+            </div><br>
+            <br>
+            <input type="submit" value="Reset"><br>
+        </form>
+    </div>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+        const passwordInput = document.getElementById("new_password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const passwordMismatchError = document.getElementById("passwordMismatchError");
+            
+            confirmPasswordInput.addEventListener("input", () => {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    passwordMismatchError.style.display = "block";
+                } else {
+                    passwordMismatchError.style.display = "none";
+                }
+            });
+    </script>
+</body>
+</html>
