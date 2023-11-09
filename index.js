@@ -12,7 +12,7 @@ const dessertRouter = require('./controllers/dessertMenu.js');
 const drinkRouter = require('./controllers/drinkMenu.js');
 const pathRouter = require('./controllers/path.js');
 const addToCartRouter = require('./controllers/addToCart.js');
-const addOrder = require('./controllers/addOrder.js');
+const addOrderRouter = require('./controllers/addOrder.js');
 const deleteRouter = require('./controllers/delete.js');
 
 const app = express();
@@ -40,7 +40,7 @@ app.use(dessertRouter);
 app.use(drinkRouter);
 app.use(pathRouter);
 app.use(addToCartRouter);
-app.use(addOrder);
+app.use(addOrderRouter);
 app.use(deleteRouter);
 
 app.listen(PORT, () => {
