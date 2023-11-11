@@ -46,5 +46,9 @@ router.get('/summarize', (req, res) =>{
     const filePath = path.join('C:', 'Users', 'Natchapol', 'Desktop', 'Fresh_Bowl', 'views', 'OrderSum.html');
     res.sendFile(filePath);
 });
+router.get('/adminadd', (req, res) =>{
+    const filePath = path.join('C:', 'Users', 'Natchapol', 'Desktop', 'Fresh_Bowl', 'views', 'Add.html');
+    res.sendFile(filePath);
+});
 
 module.exports = router;
