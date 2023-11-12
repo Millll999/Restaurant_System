@@ -10,8 +10,7 @@ router.post('/signup', (req, res) => {
         return res.send('Passwords do not match');
       }
   
-      const insertQuery = 'INSERT INTO customer (First_Name, Last_Name, Citizen_ID, address, username, password) VALUES (?, ?, ?, ?, ?, ?)';
-  
+      const insertQuery = 'INSERT INTO customer (First_Name, Last_Name, Citizen_ID, address, username, password) VALUES (?, ?, ?, ?, ?, AES_ENCRYPT(?, SHA1("x910dk-1239ja0-1321238")))';
       connection.execute(insertQuery, [First_Name, Last_Name, Citizen_ID, address, username, password], (inserterr) => {
         if (inserterr) {
           console.error('Database insert error:', inserterr);

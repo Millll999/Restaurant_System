@@ -5,7 +5,7 @@ const connection = require('../models/database.js');
 router.post('/reset-password', (req, res) =>{
     const { new_password, username } = req.body;
     try{
-    const reset = 'UPDATE customer SET password = ? WHERE username = ?';
+    const reset = 'UPDATE customer SET password = AES_ENCRYPT(?, SHA1("x910dk-1239ja0-1321238")) WHERE username = ?';
     connection.execute(reset, [new_password, username], (err)=>{
       if (err) {
         console.error('Password update query error:', err);

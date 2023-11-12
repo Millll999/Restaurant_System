@@ -17,18 +17,24 @@ router.post('/make-reservation', (req, res) =>{
           res.status(500).send('Table is already reserved');
         }else {
           const reserve = ` INSERT INTO reservation (bookingDate, tableID, customer_ID) 
-          SELECT ?, ?, customer.customer_ID FROM customer
-          WHERE username = ? AND password = ?;`;
-          connection.execute(reserve, [ bookingDate, tableID, username, password ], (err) => {
+          SELECT ?, ?, customer.customer_ID FROM customer 
+          WHERE username = ? AND AES_DECRYPT(password, SHA1("x910dk-1239ja0-1321238")) = ?;`;
+          connection.execute(reserve, [ bookingDate, tableID, username, password ], (err, results) => {
             if (err) {
               console.error('Database query error:', err);
               res.status(500).send('Error making a reservation');
-            } else {
-              console.log('Reservation made successfully');
-              //Alert
-              res.send('Reservation made successfully');
+            }else {
+              // Check if any rows were affected by the query
+              if (results.affectedRows === 0) {
+                // No rows affected means invalid username or password
+                res.status(401).send('Invalid username or password');
+              } else {
+                console.log('Reservation made successfully');
+                //Alert
+                res.send('Reservation made successfully');
+              }  
             }
-          });
+          })
         }
       }
     });
