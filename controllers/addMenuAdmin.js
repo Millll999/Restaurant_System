@@ -5,12 +5,8 @@ const connection = require('../models/database.js');
 router.post('/adminaddmenu', (req, res) => {
 const {item_name, price, category, username, password} = req.body;
 console.log(req.body);
-//try {
-    //if (password !== confirmPassword) {
-      //return res.send('Passwords do not match');
-    //}
-    const query = 'INSERT INTO `menu`( `M_Name`, `Price`, `Category`) VALUES ( ?, ?, ?)';
-    connection.execute(query, [item_name, price, category], (adminInserterr) => {
+    const query = 'INSERT INTO `menu`( `M_Name`, `Price`, `Category`) VALUES ( ?, ?, ?) WHERE username = ? AND AES_DECRYPT(password, SHA1("x910dk-1239ja0-1321238")) = ?';
+    connection.execute(query, [item_name, price, category, username, password], (adminInserterr) => {
         if (adminInserterr) {
             console.error('Database insert error:', adminInserterr);
             res.send('Error submitting data to the database');
@@ -19,10 +15,6 @@ console.log(req.body);
             res.send('Add Successful');
           }
     })
-//} catch(err) {
-    //console.error('Error:', err);
-    //res.status(500).send('An error occurred. Please try again later.');
- // }
 });
 
 module.exports = router;
