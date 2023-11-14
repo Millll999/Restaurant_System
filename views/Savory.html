@@ -116,6 +116,16 @@
             border: none;
             border-radius: 20px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden; /* Hide overflow content */
+            align-items: center;
+            justify-content: center; /* Center horizontally */
+        }
+        .menu-image {
+            
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; 
         }
         .menu-button:hover {
             background-color: #007aff;
@@ -171,6 +181,7 @@
     <h2 class="title">Savory</h2>
     <div class="container">    
         <div id="menu-container">
+            
         </div>
     </div> 
     <script>
@@ -183,6 +194,10 @@
             const button = document.createElement('button');
             button.classList.add('menu-button');
             button.textContent = item.buttonLabel;
+            const img = document.createElement('img');
+                    img.src = item.buttonImage;
+                    img.classList.add('menu-image');
+                    button.appendChild(img);
             button.addEventListener('click', () => {
                 console.log('button clicked');
                 return addToCart(item.buttonId);
@@ -214,5 +229,6 @@ function addToCart(buttonId) {
     });
 }
     </script>
+    
 </body>
 </html>
