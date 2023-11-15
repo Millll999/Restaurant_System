@@ -24,6 +24,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('views'))
 app.use(express.static('views/images'));
 app.use(express.static('utils'));
 app.use(session({
