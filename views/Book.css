@@ -1,0 +1,44 @@
+body {
+    font-family: FC Lamoon;
+    margin: 0;
+    padding: 0;
+}
+.title {
+    font-size: 90px;
+}
+.container {
+    margin: 100px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    font-family: FC Lamoon;
+    width: 200px;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.book-button {
+    font-family: FC Lamoon;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f1b930;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.order-button:hover {
+    background-color: #007aff;
+}
+.content {
+    text-align: center;
+}

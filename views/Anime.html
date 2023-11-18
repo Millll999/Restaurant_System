@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Anime.css">
+    <title>Food Animation</title>
+    <script>
+      // Function to simulate a loading delay
+      function simulateLoading() {
+          setTimeout(function() {
+              // Redirect to the home page after 5 seconds
+              window.location.href = 'Home.html';
+          }, 5000); // 5000 milliseconds = 5 seconds
+      }
+
+      // Call the function when the window is loaded
+      window.onload = simulateLoading;
+  </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="coffee-header">
+          <div class="coffee-header__buttons coffee-header__button-one"></div>
+          <div class="coffee-header__buttons coffee-header__button-two"></div>
+          <div class="coffee-header__display"></div>
+          <div class="coffee-header__details"></div>
+        </div>
+        <div class="coffee-medium">
+          <div class="coffe-medium__exit"></div>
+          <div class="coffee-medium__arm"></div>
+          <div class="coffee-medium__liquid"></div>
+          <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+          <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+          <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+          <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+          <div class="coffee-medium__cup"></div>
+        </div>
+        <div class="coffee-footer"></div>
+      </div>
+      
+</body>
+</html>

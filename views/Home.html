@@ -3,103 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="Nav.css">
+    <link rel="stylesheet" href="Video.css">
+    <link rel="stylesheet" href="Home.css">
     <title>Home Page</title>
-    <style>
-        body {
-            font-family: FC Lamoon;
-            margin: 0;
-            padding: 0;
-        }
-        .title {
-            font-size: 90px;
-        }
-        .navbar {
-            background-color: #f1b930;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 20px;
-        }
-        .profile-pic {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-        }
-        .menu-pic {
-            border-radius: 0%;
-            width: 40px;
-            height: 40px;
-        }
-
-        .content {
-            font-family: FC Lamoon;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .home-button{
-            font-family: FC Lamoon;
-            padding: 10px 20px;
-            font-size: 32px;
-            background-color: #f1b930;
-            color: black;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .order-button {
-            font-family: FC Lamoon;
-            src: url();
-            margin-top: 20px;
-            padding: 12px 40px;
-            font-size: 24px;
-            background-color: #f1b930;
-            color: black;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-        }
-        .order-button:hover {
-            background-color: #007aff;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        @media screen and (max-width: 600px) {
-            .navbar a {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
+    <video id="video-background" autoplay loop muted>
+        <source src="./videos/footage.mp4" type="video/mp4">
+    </video>
     <div class="navbar">
         <div>
             <button class="home-button" onclick="location.href='/Home'">Fresh Bowl</button>
@@ -119,7 +31,7 @@
                     <a href="#">Order history</a>
                     <a href="#">Setting</a>
                     <a href="#">Customer service</a>
-                    <a href="#">About</a>
+                    <a href="About.html">About</a>
                     <a href="/reserve">Booking</a>
                 </div>
             </div>
@@ -139,5 +51,21 @@
         </div>
     </form>   
 </form>
+<script>
+    const video = document.getElementById('video-background');
+
+    // Check if video playback time is stored in local storage
+    const savedTime = localStorage.getItem('videoPlaybackTime');
+    if (savedTime) {
+       
+        video.currentTime = parseFloat(savedTime);
+    }
+
+    // Save video playback time before navigating to the next page
+    function goToNextPage() {
+        localStorage.setItem('videoPlaybackTime', video.currentTime.toString());
+        window.location.href = 'Category.html';
+    }
+</script>
 </body>
 </html>
