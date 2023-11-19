@@ -154,72 +154,20 @@
         </div>
     </div>
     <button class="back-button" onclick="goBack()">Back</button>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+
     <h1 class="title">Summary</h1>
     <div class="container">
-    <div id="button1Summary" style="display:none;">
-        Button 1 clicks: <span id="button1ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button1')">Reset Button 1</button>
-    </div><br>
-    <div id="button2Summary" style="display:none;">
-        Button 2 clicks: <span id="button2ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button2')">Reset Button 2</button>
-    </div><br>
-    <div id="button3Summary" style="display:none;">
-        Button 3 clicks: <span id="button3ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button3')">Reset Button 3</button>
-    </div><br>
-    <div id="button4Summary" style="display:none;">
-        Button 4 clicks: <span id="button4ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button4')">Reset Button 4</button>
-    </div><br>
-    <div id="button5Summary" style="display:none;">
-        Button 5 clicks: <span id="button5ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button5')">Reset Button 5</button>
-    </div><br>
-    <div id="button6Summary" style="display:none;">
-        Button 6 clicks: <span id="button6ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button6')">Reset Button 6</button>
-    </div><br>
-    <div id="button7Summary" style="display:none;">
-        Button 7 clicks: <span id="button7ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button7')">Reset Button 7</button>
-    </div><br>
-    <div id="button8Summary" style="display:none;">
-        Button 8 clicks: <span id="button8ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button8')">Reset Button 8</button>
-    </div><br>
-    <div id="button9Summary" style="display:none;">
-        Button 9 clicks: <span id="button9ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button9')">Reset Button 9</button>
-    </div><br>
-    <div id="button10Summary" style="display:none;">
-        Button 10 clicks: <span id="button10ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button10')">Reset Button 10</button>
-    </div><br>
-    <div id="button11Summary" style="display:none;">
-        Button 11 clicks: <span id="button11ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button11')">Reset Button 11</button>
-    </div><br>
-    <div id="button12Summary" style="display:none;">
-        Button 12 clicks: <span id="button12ClickCount"></span>
-        <button class="delete-button" onclick="resetCount('button12')">Reset Button 12</button>
+
     </div>
     <button onclick="refreshPage()">Refresh</button>
-    <script>
-        function refreshPage() {
-            location.reload();
-        }
-    </script>
     </div>
     <div>
     <label><input type="checkbox" name="option" onclick="handleCheckbox(this)"> Mobile banking</label>
     <label><input type="checkbox" name="option" onclick="handleCheckbox(this)"> Cash</label><br>
     <script>
+        function goBack() {
+            window.history.back();
+        }
         function handleCheckbox(checkbox) {
             var checkboxes = document.getElementsByName("option");
             checkboxes.forEach(function(item) {
@@ -228,44 +176,13 @@
                 }
             });
         }
+        function refreshPage() {
+            location.reload();
+        }
     </script>
     <br>
-    <button class="buy-button" onclick="location.href='receipt.html'">Buy now</button>
+    <button class="buy-button" onclick="location.href=''">Buy now</button>
     </div>
 
-
-    <script>
-        function resetCount(buttonId) {
-            let counterKey = buttonId + 'ClickCount';
-            localStorage.setItem(counterKey, 0);
-            document.getElementById(buttonId + 'ClickCount').textContent = 0;
-        }
-
-        document.getElementById('button1ClickCount').textContent = localStorage.getItem('button1ClickCount') || 0;
-        document.getElementById('button2ClickCount').textContent = localStorage.getItem('button2ClickCount') || 0;
-        document.getElementById('button3ClickCount').textContent = localStorage.getItem('button3ClickCount') || 0;
-        document.getElementById('button4ClickCount').textContent = localStorage.getItem('button4ClickCount') || 0;
-        document.getElementById('button5ClickCount').textContent = localStorage.getItem('button5ClickCount') || 0;
-        document.getElementById('button6ClickCount').textContent = localStorage.getItem('button6ClickCount') || 0;
-        document.getElementById('button7ClickCount').textContent = localStorage.getItem('button7ClickCount') || 0;
-        document.getElementById('button8ClickCount').textContent = localStorage.getItem('button8ClickCount') || 0;
-        document.getElementById('button9ClickCount').textContent = localStorage.getItem('button9ClickCount') || 0;
-        document.getElementById('button10ClickCount').textContent = localStorage.getItem('button10ClickCount') || 0;
-        document.getElementById('button11ClickCount').textContent = localStorage.getItem('button11ClickCount') || 0;
-        document.getElementById('button12ClickCount').textContent = localStorage.getItem('button12ClickCount') || 0;
-
-        if(localStorage.getItem('button1ClickCount') > 0) document.getElementById('button1Summary').style.display = "block";
-        if(localStorage.getItem('button2ClickCount') > 0) document.getElementById('button2Summary').style.display = "block";
-        if(localStorage.getItem('button3ClickCount') > 0) document.getElementById('button3Summary').style.display = "block";
-        if(localStorage.getItem('button4ClickCount') > 0) document.getElementById('button4Summary').style.display = "block";
-        if(localStorage.getItem('button5ClickCount') > 0) document.getElementById('button5Summary').style.display = "block";
-        if(localStorage.getItem('button6ClickCount') > 0) document.getElementById('button6Summary').style.display = "block";
-        if(localStorage.getItem('button7ClickCount') > 0) document.getElementById('button7Summary').style.display = "block";
-        if(localStorage.getItem('button8ClickCount') > 0) document.getElementById('button8Summary').style.display = "block";
-        if(localStorage.getItem('button9ClickCount') > 0) document.getElementById('button9Summary').style.display = "block";
-        if(localStorage.getItem('button10ClickCount') > 0) document.getElementById('button10Summary').style.display = "block";
-        if(localStorage.getItem('button11ClickCount') > 0) document.getElementById('button11Summary').style.display = "block";
-        if(localStorage.getItem('button12ClickCount') > 0) document.getElementById('button12Summary').style.display = "block";
-    </script>
 </body>
 </html>

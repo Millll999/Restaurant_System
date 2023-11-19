@@ -37,17 +37,16 @@ router.post('/addorder', (req, res) => {
                             console.error('Database query error:', mhoErr);
                             return res.status(500).json({ error: 'Error adding items to cart' });
                         }
-                        // Empty session after adding items to cart
-                        req.session.cart = [];
-                        res.redirect('/summarize');
                     });
+                    req.session.cart = [];
+                    res.redirect('/summarizing');
                 });
             })
             .catch(error => {
                 console.error('Error calculating total amount:', error.message);
                 res.status(500).json({ error: 'Error calculating total amount' });
             });      
-    })
+        })
 })
 
 module.exports = router;

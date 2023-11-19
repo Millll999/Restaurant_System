@@ -42,7 +42,7 @@ router.get('/delete', (req, res) => {
     const filePath = path.join('C:', 'Users', 'Natchapol', 'Desktop', 'Fresh_Bowl', 'views', 'Delete.html');
     res.sendFile(filePath);
 });
-router.get('/summarize', (req, res) =>{
+router.get('/summarizing', (req, res) =>{
     const filePath = path.join('C:', 'Users', 'Natchapol', 'Desktop', 'Fresh_Bowl', 'views', 'OrderSum.html');
     res.sendFile(filePath);
 });
