@@ -15,8 +15,8 @@ const addToCartRouter = require('./controllers/addToCart.js');
 const addOrderRouter = require('./controllers/addOrder.js');
 const deleteRouter = require('./controllers/delete.js');
 const adminaddRouter = require('./controllers/addMenuAdmin.js');
-
-
+const summarize = require('./controllers/summary.js');
+const payment = require('./controllers/payment.js');
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -47,7 +47,8 @@ app.use(addToCartRouter);
 app.use(addOrderRouter);
 app.use(deleteRouter);
 app.use(adminaddRouter);
-
+app.use(summarize);
+app.use(payment);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

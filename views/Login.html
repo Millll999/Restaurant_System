@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Video.css">
     <link rel="stylesheet" href="Login.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     
     <title>Login Page</title>
 </head>
@@ -15,9 +14,9 @@
     </video>
     <div class="container">
         <h2 class="title">Fresh Bowl</h2>
-        <form action = "/login" method="post">
-            <label>Username <input type="text" name="username" placeholder="" required></label><br>
-            <label>Password <input type="password" name="password" placeholder="" required></label><br>
+        <form action = "/login" method="post" onsubmit="return validateForm()">
+            <label>Username <input type="text" name="username" id="username" placeholder="" required></label><br>
+            <label>Password <input type="password" name="password" id="password" placeholder="" required></label><br>
             <label><input type="checkbox" name="remember"> Remember me</label><br>
             <br>
             <input type="submit" value="Login"><br>
@@ -27,5 +26,21 @@
             <label>Forgot pssword?</label><a href="/re"> Forgot Password </a><br>
         </form>
     </div>
+    <script>
+          function validateForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Regular expression to allow only letters, numbers, and underscores
+    var regex = /^[a-zA-Z0-9_]+$/;
+
+    if (!regex.test(username) || !regex.test(password)) {
+      // Display an error message near the form or use another method to inform the user
+      alert('Special characters are not allowed in the username or password.');
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+    </script>
 </body>
 </html> 

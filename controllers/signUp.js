@@ -4,7 +4,35 @@ const connection = require('../models/database.js');
 
 router.post('/signup', (req, res) => {
     const { First_Name, Last_Name, Citizen_ID, address, username, password, confirmPassword } = req.body;
-  
+    const First_NameRegex = /^[a-zA-Z]+$/;
+    const Last_NameRegex = /^[a-zA-Z]+$/;
+    const Citizen_IDRegax = /^[0-9]+$/;
+    const addressRegax = /^[a-zA-Z0-9_]+$/;
+    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    const passwordRegex = /^[a-zA-Z0-9_]+$/;
+    const confirmPasswordRegax =  /^[a-zA-Z0-9_]+$/;
+
+    
+      if (!First_NameRegex.test(First_Name)) {
+        return res.status(400).send('Invalid first name');
+      }
+
+      if (!Last_NameRegex.test(Last_Name)) {
+        return res.status(400).send('Invalid last name');
+      }
+
+      if (!Citizen_IDRegax.test(Citizen_ID)) {
+        return res.status(400).send('Invalid citizen ID');
+      }
+
+      if (!addressRegax.test(address)) {
+        return res.status(400).send('Invalid address');
+      }
+
+      if (!usernameRegex.test(username) || !passwordRegex.test(password) || !confirmPasswordRegax.test(confirmPassword)) {
+        return res.status(400).send('Invalid username or password');
+      }
+      
     try {
       if (password !== confirmPassword) {
         return res.send('Passwords do not match');

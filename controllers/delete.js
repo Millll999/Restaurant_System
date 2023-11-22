@@ -4,7 +4,7 @@ const connection = require('../models/database.js');
 
 router.post('/deleterUser', (req, res) => {
     const { username, password } = req.body;
-    const query = 'DELETE FROM `customer` WHERE username = ? AND password = ?'
+    const query = 'DELETE FROM `customer` WHERE username = ? AND  AES_DECRYPT(password, SHA1("x910dk-1239ja0-1321238")) = ?'
 
     connection.execute(query, [username, password], (delerr, result)=> {
         if (delerr) {

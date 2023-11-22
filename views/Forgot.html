@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2 class="title">Reset your password</h2>
-        <form action = "/reset-password" method="post">
+        <form action = "/reset-password" method="post" onsubmit="return validateForm()">
         <label for="username">Username </label>
         <input type="text" id="username" name="username" required><br>
         <label for="new_password">New Password </label>
@@ -39,6 +39,22 @@
                     passwordMismatchError.style.display = "none";
                 }
             });
+           
+          function validateForm() {
+    var username = document.getElementById("username").value;
+    var newpassword = document.getElementById("new_password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    // Regular expression to allow only letters, numbers, and underscores
+    var regex = /^[a-zA-Z0-9_]+$/;
+
+    if (!regex.test(username) || !regex.test(newpassword) || !regex.test(confirmPassword)) {
+      // Display an error message near the form or use another method to inform the user
+      alert('Special characters are not allowed in the username or password.');
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+
     </script>
 </body>
 </html>

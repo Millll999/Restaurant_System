@@ -156,33 +156,46 @@
     <button class="back-button" onclick="goBack()">Back</button>
 
     <h1 class="title">Summary</h1>
-    <div class="container">
 
-    </div>
-    <button onclick="refreshPage()">Refresh</button>
-    </div>
+
+    <div id="container">
+
+    <form action = "/payment" method="post">
     <div>
-    <label><input type="checkbox" name="option" onclick="handleCheckbox(this)"> Mobile banking</label>
-    <label><input type="checkbox" name="option" onclick="handleCheckbox(this)"> Cash</label><br>
+    <label><input type="checkbox" name="Mobile_Bank"> Mobile banking</label>
+    <label><input type="checkbox" name="Cash"> Cash</label><br>
+    <br>
+    <button class="buy-button" type="submit">Buy now</button>
     <script>
         function goBack() {
             window.history.back();
         }
-        function handleCheckbox(checkbox) {
-            var checkboxes = document.getElementsByName("option");
-            checkboxes.forEach(function(item) {
-                if (item !== checkbox) {
-                    item.checked = false;
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+        const menuContainer = document.getElementById('container');
+    fetch('/summarize')
+        .then(response => response.json())
+        .then(data => {
+            if (data.menuItems && data.menuItems.length > 0) {
+                data.menuItems.forEach(item => {
+                    const menuItemText = `${item.menuName}`;
+                    const menuItemElement = document.createElement('p');
+                    menuItemElement.textContent = menuItemText;
+                        menuContainer.appendChild(menuItemElement);
+                    const lineBreak = document.createElement('br');
+                        menuContainer.appendChild(lineBreak);
             });
+        } else {
+            console.error('No menuItems found in the received data.');
         }
-        function refreshPage() {
-            location.reload();
-        }
+    })
+    .catch(error => {
+        console.error('AJAX error:', error);
+    });
+});
     </script>
-    <br>
-    <button class="buy-button" onclick="location.href=''">Buy now</button>
+
     </div>
+    </form>
 
 </body>
 </html>
