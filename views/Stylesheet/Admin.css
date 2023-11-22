@@ -1,0 +1,102 @@
+body {
+    font-family: FC Lamoon;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #f1b930;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-button {
+    font-family: FC Lamoon;
+    font-size: 36px;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    opacity: 0.7;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.profile-pic,
+.menu-pic {
+    width: 40px;
+    height: 40px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    width: 160px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1b930;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.admin-content {
+    margin: 0px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.admin-title {
+    font-size: 36px;
+    margin: 0px;
+    color: #333;
+}
+
+.category-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.category-button {
+    font-family: FC Lamoon;
+    width: 200px; /* Adjusted width */
+    height: 60px; /* Adjusted height */
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 24px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.category-button:hover {
+    opacity: 0.7;
+}

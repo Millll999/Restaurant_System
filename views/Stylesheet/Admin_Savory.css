@@ -1,0 +1,124 @@
+/* Add your CSS styles here */
+body {
+    font-family: FC Lamoon;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #f1b930; /* Yellow box background color */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-button {
+    font-family: FC Lamoon;
+    font-size: 36px;
+    color: black; /* Text color */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    opacity: 0.7;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.profile-pic,
+.menu-pic {
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Dropdown background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    width: 160px; /* Adjust the width as needed */
+}
+
+.dropdown-content a {
+    color: #333; /* Dropdown text color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1b930; /* Hover background color */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.admin-content {
+    margin: 0px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.admin-title {
+    font-size: 36px;
+    margin: 0px;
+    color: #333; /* Adjust the title color as needed */
+}
+
+.admin-box {
+    background-color: #f1b930; /* Yellow box background color */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a lifted look */
+}
+
+.add-menu,
+.menu-button,
+.drop-menu {
+    font-family: FC Lamoon;
+    margin-top: 20px;
+    padding: 12px 40px;
+    font-size: 24px;
+    background-color: #333; /* Button color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.add-menu:hover,
+.menu-button:hover,
+.drop-menu:hover {
+    opacity: 0.7;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 30px;
+}
+
+.menu-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Optional: Add a border between menu items */
+}
+
+.menu-icons img {
+    margin-left: 10px;
+}

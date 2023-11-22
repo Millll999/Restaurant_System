@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="./Stylesheet/Admin_Savory.css">
+    <!-- Include SweetAlert CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function goToAddPage() {
+            const currentPage = window.location.href;
+            // Pass the source page information to Add.html
+            window.open(`Add.html?source=${encodeURIComponent(currentPage)}`, '_blank');
+        }
+
+
+        function goToDropPage() {
+        const currentPage = window.location.href;
+        // Pass the source page information to DropMenu.html
+        window.open(`DropMenu.html?source=${encodeURIComponent(currentPage)}`, '_blank');
+}
+
+
+        // Function to handle logout
+        function logout() {
+            // Display SweetAlert for confirmation
+            Swal.fire({
+                title: 'Logout?',
+                text: 'You will be returned to the login screen.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, redirect to the login page
+                    window.location.href = 'Login.html';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/dessertmenu') 
+                .then((response) => response.json())
+                .then((data) => {
+                    const menuContainer = document.getElementById('menu-list');
+                    data.forEach((item) => {
+                        const menuName = item.buttonLabel;
+
+                        const textElement = document.createElement('p');
+                        textElement.classList.add('menu-text');
+                        textElement.textContent = menuName;
+
+                        menuContainer.appendChild(textElement);
+                    });
+                })
+                .catch((error) => {
+                    console.error('AJAX error:', error);
+                });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <button class="home-button" onclick="location.href='Admin.html'">Admin</button>
+        </div>
+        <div>
+            <div class="dropdown">
+                <img class="profile-pic" src="profile.png" alt="Profile Picture">
+                <div class="dropdown-content" style="right: -20px;">
+                    <!-- Update the onclick attribute to call the new logout function -->
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+
+            <div class="dropdown" style="padding-left: 20px;">
+                <img class="menu-pic" src="menu.png" alt="Menu Picture">
+                <div class="dropdown-content" style="right: -20px;">
+                    <a href="#">Employee</a>
+                    <a href="#">Restaurant Detail</a>
+                    <a href="#">Setting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-content">
+        <h2 class="admin-title">Dessert</h2>
+        <div class="admin-box">
+            <ul id="menu-list">
+                <!-- Menu items will be dynamically added here -->
+            </ul>
+        </div>
+        <button class="add-menu" onclick="goToAddPage()">Add Menu</button>
+        <button class="drop-menu" onclick="goToDropPage()">Drop Menu</button>
+    </div>
+</body>
+</html>

@@ -4,6 +4,7 @@ const connection = require('../models/database.js');
 
 router.post('/payment', (req, res) => {
     const userID = req.session.userID;
+    const method = req.body;
     const customerQuery = 'SELECT Customer_ID FROM customer WHERE username = ?';
     
     connection.execute(customerQuery, [userID], (customerErr, customerResult) => {
@@ -19,11 +20,11 @@ router.post('/payment', (req, res) => {
         const Customer_ID = customerResult[0].Customer_ID;
     
         const insertPaymentQuery = `
-            INSERT INTO payment (order_ID, amount, Date)
-            SELECT Order_ID, total, NOW() FROM ordering WHERE Customer_ID = ?;
+            INSERT INTO payment (order_ID, amount, Date, payment_method)
+            SELECT Order_ID, total, NOW(), ? FROM ordering WHERE Customer_ID = ?;
         `;
     
-        connection.execute(insertPaymentQuery, [Customer_ID], (insertErr, insertResult) => {
+        connection.execute(insertPaymentQuery, [method, Customer_ID], (insertErr, insertResult) => {
             if (insertErr) {
                 console.error('Database query error:', insertErr);
                 return res.status(500).json({ error: 'Error inserting into payment' });

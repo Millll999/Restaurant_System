@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Stylesheet/DropMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+    <title>Drop Menu Item</title>
+</head>
+<body>
+    <h1>Drop Menu</h1>
+
+    <form action="/admindropmenu" method="post">
+        <label for="menuName">Menu Name:</label>
+        <input type="text" id="menuName" name="menuName" required><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Drop Menu</button>
+        <button type="button" onclick="goBack()">Back</button>
+        
+    </form>
+
+    <script>
+        
+        function goBack() {
+    // Extract the source page from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sourcePage = urlParams.get('source');
+
+    // Navigate back to the correct page based on the source
+    if (sourcePage) {
+        window.location.href = sourcePage;
+    } else {
+        // If sourcePage is not specified, default to Admin_Savory.html
+        window.location.href = 'Admin_Savory.html';
+    }
+}
+
+    </script>
+</body>
+</html>

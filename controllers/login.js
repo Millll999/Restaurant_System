@@ -6,7 +6,7 @@ router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   const usernameRegex = /^[a-zA-Z0-9_]+$/;
-  const passwordRegex = /^[a-zA-Z0-9_]+$/; // Adjust as needed
+  const passwordRegex = /^[a-zA-Z0-9_]+$/;
 
   if (!usernameRegex.test(username) || !passwordRegex.test(password)) {
     return res.status(400).send('Invalid special charecter');
