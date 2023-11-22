@@ -21,25 +21,21 @@
             <br>
             <input type="submit" value="Login"><br>
             <br>
-            <label>Don't have an account?</label><a href="/sign"> Sign Up </a><br>
+            <label>Don't have an account?</label><a href="/sign" style="color: #007aff;"> Sign Up </a><br>
             <br>
-            <label>Forgot pssword?</label><a href="/re"> Forgot Password </a><br>
+            <label>Forgot pssword?</label><a href="/re" style="color: #007aff;"> Forgot Password </a><br>
         </form>
     </div>
     <script>
-          function validateForm() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    // Regular expression to allow only letters, numbers, and underscores
-    var regex = /^[a-zA-Z0-9_]+$/;
-
+        function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var regex = /^[a-zA-Z0-9_]+$/;
     if (!regex.test(username) || !regex.test(password)) {
-      // Display an error message near the form or use another method to inform the user
       alert('Special characters are not allowed in the username or password.');
-      return false; // Prevent form submission
+      return false; 
     }
-    return true; // Allow form submission
+    return true; 
   }
     </script>
 </body>

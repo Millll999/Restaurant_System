@@ -40,7 +40,7 @@
     </div>
     <button class="back-button" onclick="goBack()">Back</button> 
     <form action="/addorder" method="post" >  
-    <button class="cart-button" type="submit" onclick="redirectToOrderSummary()"></button>
+    <button class="cart-button" type="submit" src="cart.png"></button>
     </form>
     <div class="search-bar">
         <input type="search" placeholder="Search...">
@@ -95,9 +95,9 @@ function addToCart(buttonId) {
         console.error('AJAX error:', error);
     });
 }
-function redirectToOrderSummary() {
-        // Redirect to the "/addorder" page
-        window.location.href = '/summarizing';
+
+function goBack() {
+    window.history.back();
 }
 </script>
     

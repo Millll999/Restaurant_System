@@ -51,7 +51,7 @@ body {
     background-color: #007aff;
 }
 .cart-button {
-    background-image: url('./images/Cart.png');
+    background-image: url('../images/Cart.png');
     background-size: cover;
     position: fixed;
     width: 70px;
