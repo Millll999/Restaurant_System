@@ -20,17 +20,15 @@ router.post('/payment', (req, res) => {
         const Customer_ID = customerResult[0].Customer_ID;
     
         const insertPaymentQuery = `
-            INSERT INTO payment (order_ID, amount, Date, payment_method)
-            SELECT Order_ID, total, NOW(), ? FROM ordering WHERE Customer_ID = ?;
+            INSERT INTO payment (Customer_ID, amount, Date, payment_method)
+            SELECT ?, total, NOW(), ? FROM ordering WHERE Customer_ID = ?;
         `;
     
-        connection.execute(insertPaymentQuery, [method, Customer_ID], (insertErr, insertResult) => {
+        connection.execute(insertPaymentQuery, [Customer_ID, method, Customer_ID], (insertErr, insertResult) => {
             if (insertErr) {
                 console.error('Database query error:', insertErr);
                 return res.status(500).json({ error: 'Error inserting into payment' });
             }
-    
-            // Payment successfully inserted
             res.redirect('/thank')
         });
     });
